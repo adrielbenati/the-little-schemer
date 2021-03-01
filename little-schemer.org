@@ -207,4 +207,16 @@ The next section is the =else= block. It recurs =insertR= over ~(cdr lat)~, whil
    (cons (car lat) (insertR new old (cdr lat))))
 #+end_src
 
+** insertL
+
+#+begin_src scheme :tangle src/3.scm
+  (define insertL
+    (lambda (new old lat)
+      (cond
+       ((null? lat) (quote ()))
+       ((eq? (car lat) old)
+        (cons new lat))
+       (else
+        (cons (car lat) (insertL new old (cdr lat)))))))
+
 #+end_src
