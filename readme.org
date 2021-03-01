@@ -1,0 +1,11 @@
+#+title: README
+#+author: aabm
+
+* "The Little Schemer" exercises, solutions and notes
+
+This repository contains my solutions and notes on the exercises from the book "[[https://mitpress.ublish.com/book/little-schemer][The Little Schemer]]".
+
+This repository uses /literate programming/ to manage notes and code. Both notes and code can be found in the =little-schemer.org= file.
+
+All code is also extracterd to the =src= directory, with one file per chapter.
+
