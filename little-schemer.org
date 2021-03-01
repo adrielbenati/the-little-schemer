@@ -148,6 +148,8 @@ Use =cons= to build lists.
 
 ** firsts
 
+This function takes a list of lists =l= and returns the list of the first S-expressions in each sublist contained in =l=.
+
 #+begin_src scheme :tangle src/3.scm
   (define firsts
     (lambda (l)
@@ -157,3 +159,16 @@ Use =cons= to build lists.
                    (firsts (cdr l)))))))
 #+end_src
 
+*** Breaking it down
+
+The first section, as per the First Commandment, checks if the list =l= is null. If so, the function simply returns =l=. If not, then it continues.
+
+#+begin_src scheme
+((null? l) (quote ()))
+#+end_src
+
+The next section is the =else= section. It recurs over =l=, using =car= to go over each list, taking each sublists own =car=. Meanwhile, it stores each =car= to be consed to the final list afterwards.
+
+#+begin_src scheme
+(else (cons (car (car l)) (firsts (cdr l))))
+#+end_src
