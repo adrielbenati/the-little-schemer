@@ -110,6 +110,8 @@ Always ask =null?= as the first question in expressing any function.
 
 ** rember
 
+This function recurs over a list of atoms =lat= and returns =lat= with the first occurrence of atom =a= removed.
+
 #+begin_src scheme :tangle src/3.scm
   (define rember
     (lambda (a lat)
@@ -120,6 +122,26 @@ Always ask =null?= as the first question in expressing any function.
                    (rember a (cdr lat)))))))
 #+end_src
 
+
+*** Breaking it down
+
+This first bit checks if the list =lat= is null. If so, it returns the null list. If not, the function continues.
+
+#+begin_src scheme
+((null? lat) (quote ()))
+#+end_src
+
+This section checks whether the =car= of =lat= is equal to =a=. If so, then the function returns the =cdr= of =lat=, which is equivalent to =lat= minus the first ocurrence of =a=. If not, then the function continues.
+
+#+begin_src scheme
+((eq? (car lat) a) (cdr lat))
+#+end_src
+
+If the above conditions and consequences fail, then the function moves on to =else=. This section recurs over =lat=, checking each individual atom, while also storing the atoms it has recurred over, which will be consed onto the final list.
+
+#+begin_src scheme
+(else (cons (car lat) (rember a (cdr lat))))
+#+end_src
 ** The Second Commandment
 
 Use =cons= to build lists.
