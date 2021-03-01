@@ -209,6 +209,8 @@ The next section is the =else= block. It recurs =insertR= over ~(cdr lat)~, whil
 
 ** insertL
 
+This one functions similarly to the one above, except instead of adding atom =new= to the right of atom =old=, it adds it to the left.
+
 #+begin_src scheme :tangle src/3.scm
   (define insertL
     (lambda (new old lat)
@@ -218,5 +220,20 @@ The next section is the =else= block. It recurs =insertR= over ~(cdr lat)~, whil
         (cons new lat))
        (else
         (cons (car lat) (insertL new old (cdr lat)))))))
+#+end_src
 
+*** Breaking it down
+
+This section checks whether =old= is the same as the =car= of =lat=. If so, it conses =new= onto =lat= and finishes. If not, the function continues.
+
+#+begin_src scheme
+  ((eq? (car lat) old)
+   (cons new lat))
+#+end_src
+
+This part recurses over the =cdr= of =lat=, and conses the =car= of =lat= on top of the final list.
+
+#+begin_src scheme
+  (else
+   (cons (car lat) (insertL new old (cdr lat))))
 #+end_src
