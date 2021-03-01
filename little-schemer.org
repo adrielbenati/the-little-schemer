@@ -1,0 +1,126 @@
+#+title: "The Little Schemer" exercises and solutions
+#+author: aabm
+#+startup: overview
+
+* Toys
+
+** Law of Car
+
+The primitive =car= is defined only for non-empty lists.
+
+** Law of Cdr
+
+The primitive =cdr= is defined only for non-empty lists. The =cdr= of any non-empty list is always another list.
+
+** Law of Cons
+
+The primitive =cons= takes two arguments. The second argument to =cons= must be a list. The result is a list.
+
+** Law of Null?
+
+The primitive =null?= is defined only for lists.
+
+** Law of Eq?
+
+The primitive =eq?= takes two arguments. Each must be a non-numeric atom.
+
+** atom?
+
+An elementary function defined early. Notice how, in Scheme, functions
+are simply variables that contain lambdas.
+
+This function checks whether an argument =x= is an atom.
+
+#+begin_src scheme :tangle src/1.scm
+  (define atom?
+    (lambda (x)
+      (and (not (pair? x)) (not (null? x)))))
+#+end_src
+
+* Do it, Do it Again, and Again, and Again...
+
+** lat?
+
+This function checks whether =l= is a list of atoms. It does this by
+going over each S-expression it contains and checking them
+individually.
+
+#+begin_src scheme :tangle src/2.scm
+  (define lat?
+    (lambda (l)
+      (cond
+       ((null? l) #t)
+       ((atom? (car l)) (lat? (cdr l)))
+       (else #f))))
+#+end_src
+
+*** Breaking it down
+
+This section checks whether =l= is the null list. If not, the function
+continues. If true, the function returns #t.
+
+#+begin_src scheme
+  ((null? l) #t)
+#+end_src
+
+This is probably the more interesting section of the function. It
+checks whether the =car= of =l= is an atom, and if so, call the
+function again on the =cdr= of =l=, recursively.
+
+#+begin_src scheme
+((atom? (car l)) (lat? (cdr l)))
+#+end_src
+
+Finally, if all else fails, then the function returns #f.
+
+** member?
+
+This function checks whether atom =a= is a member of list =lat=. It
+does this by going over each S-expression in =lat=, comparing them to
+=a=.
+
+#+begin_src scheme :tangle src/2.scm
+  (define member?
+    (lambda (a lat)
+      (cond
+       ((null? lat) #f)
+       (else (or (eq? (car lat) a)
+                 (member? a (cdr lat)))))))
+#+end_src
+
+*** Breaking it down
+
+This first section checks whether the list =lat= is null. If so, then
+the function returns #f. If not, then the function continues.
+
+#+begin_src scheme
+((null? lat) #f)
+#+end_src
+
+The function already moves on to the alternative, no consequence
+here. The alternative routine is to check whether either a) the =car=
+of =lat= is equal to =a=, or b) run the function again on the =cdr= of
+=lat=, recursively.
+
+** The First Commandment
+
+Always ask =null?= as the first question in expressing any function.
+
+* Cons the Magnificent
+
+** rember
+
+#+begin_src scheme :tangle src/3.scm
+  (define rember
+    (lambda (a lat)
+      (cond
+       ((null? lat) (quote ()))
+       ((eq? (car lat) a) (cdr lat))
+       (else (cons (car lat)
+                   (rember a (cdr lat)))))))
+#+end_src
+
+** The Second Commandment
+
+Use =cons= to build lists.
+
