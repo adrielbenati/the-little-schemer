@@ -126,7 +126,7 @@ Use =cons= to build lists.
 
 ** firsts
 
-#+begin_src scheme
+#+begin_src scheme :tangle src/3.scm
   (define firsts
     (lambda (l)
       (cond
