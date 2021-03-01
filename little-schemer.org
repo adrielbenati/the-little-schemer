@@ -175,7 +175,7 @@ The next section is the =else= section. It recurs over =l=, using =car= to go ov
 
 ** insertR
 
-#+begin_src scheme
+#+begin_src scheme :tangle src/3.scm
   (define insertR
     (lambda (new old lat)
       (cond
