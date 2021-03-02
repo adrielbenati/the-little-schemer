@@ -336,4 +336,19 @@ This is the =rember= function from above but with an extra level of recursion. T
 Always change at least one argument while recurring. It must be
 changed to be closer to termination. The changing argument must be
 tested in the termination condition: when using =cdr=, test termination
-with =null?=
+with =null?=.
+
+** multisubst
+
+#+begin_src scheme :tangle src/3.scm
+  (define multisubst
+    (lambda (new old lat)
+      (cond
+       ((null? lat) (quote ()))
+       ((eq? (car lat) old)
+        (cons new
+              (multisubst new old (cdr lat))))
+       (else
+        (cons (car lat)
+              (multisubst new old (cdr lat)))))))
+#+end_src
