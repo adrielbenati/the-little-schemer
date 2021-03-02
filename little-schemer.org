@@ -269,3 +269,22 @@ I'm not even going to bother explaining this function in depth. It is very simil
         (cons (car lat)
               (subst new old (cdr lat)))))))
 #+end_src
+
+** subst2
+
+This one works similarly to the above =subst=, except instead of replacing only one atom, it replaces the first occurrence of either one of two atoms, =o1= or =o2=, with =new=.
+
+#+begin_src scheme :tangle src/3.scm
+  (define subst2
+    (lambda (new o1 o2 lat)
+    (cond
+     ((null? lat) (quote ()))
+     ((eq? (car lat) o1)
+      (cons new (cdr lat)))
+     ((eq? (car lat) o2)
+      (cons new (cdr lat)))
+     (else
+      (cons (car lat)
+            (subst2 new o1 o2
+                    (cdr lat)))))))
+#+end_src
