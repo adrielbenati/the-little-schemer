@@ -261,7 +261,9 @@ This part recurses over the =cdr= of =lat=, and conses the =car= of
     (lambda (new old lat)
       (cond
        ((null? lat) (quote ()))
-       ((eq? (car lat) old) (cons new (cdr lat)))
+       ((eq? (car lat) old)
+        (cons new (cdr lat)))
        (else
-        ()))))
+        (cons (car lat)
+              (subst new old (cdr lat)))))))
 #+end_src
