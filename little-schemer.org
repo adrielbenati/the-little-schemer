@@ -290,6 +290,8 @@ This one works similarly to the above =subst=, except instead of replacing only 
 
 ** multirember
 
+This is the =rember= function from above but with an extra level of recursion. This makes it able to replace all occurrences of atom =a= within =lat=.
+
 #+begin_src scheme :tangle src/3.scm
   (define multirember
     (lambda (a lat)
