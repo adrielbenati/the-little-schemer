@@ -256,6 +256,8 @@ This part recurses over the =cdr= of =lat=, and conses the =car= of
 
 ** subst
 
+I'm not even going to bother explaining this function in depth. It is very similar in functioning to =insertR= and =insertL=, except instead of adding an atom to a certain position, it replaces =old= with =new=.
+
 #+begin_src scheme :tangle src/3.scm
   (define subst
     (lambda (new old lat)
