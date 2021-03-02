@@ -317,3 +317,18 @@ This is the =rember= function from above but with an extra level of recursion. T
                    (multiinsertR new old (cdr lat)))))))
 #+end_src
 
+** multiinsertL
+
+#+begin_src scheme :tangle src/3.scm
+  (define multiinsertL
+    (lambda (new old lat)
+      (cond
+       ((null? lat) (quote ()))
+       ((eq? (car lat) old)
+        (cons new (cons old
+                        (multiinsertL new old
+                                      (cdr lat)))))
+       (else
+        (cons (car lat)
+              (multiinsertL new old (cdr lat)))))))
+#+end_src
