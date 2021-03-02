@@ -287,3 +287,17 @@ This one works similarly to the above =subst=, except instead of replacing only 
               (subst2 new o1 o2
                       (cdr lat)))))))
 #+end_src
+
+** multirember
+
+#+begin_src scheme :tangle src/3.scm
+  (define multirember
+    (lambda (a lat)
+      (cond
+       ((null? lat) (quote ()))
+       ((eq? (car lat) a)
+        (multirember a (cdr lat)))
+       (else
+        (cons (car lat)
+              (multirember a (cdr lat)))))))
+#+end_src
