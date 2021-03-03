@@ -256,7 +256,9 @@ This part recurses over the =cdr= of =lat=, and conses the =car= of
 
 ** subst
 
-I'm not even going to bother explaining this function in depth. It is very similar in functioning to =insertR= and =insertL=, except instead of adding an atom to a certain position, it replaces =old= with =new=.
+I'm not even going to bother explaining this function in depth. It is
+very similar in functioning to =insertR= and =insertL=, except instead
+of adding an atom to a certain position, it replaces =old= with =new=.
 
 #+begin_src scheme :tangle src/3.scm
   (define subst
@@ -272,7 +274,9 @@ I'm not even going to bother explaining this function in depth. It is very simil
 
 ** subst2
 
-This one works similarly to the above =subst=, except instead of replacing only one atom, it replaces the first occurrence of either one of two atoms, =o1= or =o2=, with =new=.
+This one works similarly to the above =subst=, except instead of
+replacing only one atom, it replaces the first occurrence of either
+one of two atoms, =o1= or =o2=, with =new=.
 
 #+begin_src scheme :tangle src/3.scm
   (define subst2
@@ -290,7 +294,9 @@ This one works similarly to the above =subst=, except instead of replacing only 
 
 ** multirember
 
-This is the =rember= function from above but with an extra level of recursion. This makes it able to replace all occurrences of atom =a= within =lat=.
+This is the =rember= function from above but with an extra level of
+recursion. This makes it able to replace all occurrences of atom =a=
+within =lat=.
 
 #+begin_src scheme :tangle src/3.scm
   (define multirember
