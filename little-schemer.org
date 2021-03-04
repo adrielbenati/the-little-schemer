@@ -716,3 +716,18 @@ simple, depends on the = function. The other two are standalone.
     (lambda (n)
       (= n 1)))
 #+end_src
+
+** rempick using one?
+
+Experimental version of =rempick= using =one?= instead of =zero?=. A
+bit easier to understand, though less flexible (depends on =one?=) and
+not any more useful.
+
+#+begin_src scheme :tangle src/4.scm
+  (define rempick
+    (lambda (n lat)
+      (cond
+       ((one? n) (cdr lat))
+       (else
+        (cons (car lat) (rempick (sub1 n) (cdr lat)))))))
+#+end_src

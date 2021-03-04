@@ -179,3 +179,10 @@
        ((eq? (car lat) a)
         (add1 (occur a (cdr lat))))
        (else (occur a (cdr lat))))))))
+
+(define rempick
+  (lambda (n lat)
+    (cond
+     ((one? n) (cdr lat))
+     (else
+      (cons (car lat) (rempick (sub1 n) (cdr lat)))))))
