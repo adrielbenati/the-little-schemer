@@ -88,3 +88,10 @@
      ((zero? n) 0)
      (else
       (x n (expt n (sub1 m)))))))
+
+(define division
+  (lambda (n m)
+    (cond
+     ((< n m) 0)
+     (else
+      (add1 (??? (minus n m) m))))))
