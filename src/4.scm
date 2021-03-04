@@ -80,3 +80,11 @@
      ((< n m) #f)
      ((> n m) #f)
      (else #t))))
+
+(define ^
+  (lambda (n m)
+    (cond
+     ((zero? m) 1)
+     ((zero? n) 0)
+     (else
+      (x n (expt n (sub1 m)))))))
