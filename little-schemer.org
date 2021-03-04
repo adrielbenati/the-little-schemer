@@ -674,3 +674,19 @@ the same atom. This is similar to =eq?=, but also supports numbers.
        (else
         (eq? a1 a2)))))
 #+end_src
+
+** occur
+
+This function counts how many times an atom =a= appears in list =lat=.
+
+#+begin_src scheme :tangle src/4.scm
+  (define occur
+    (lambda (a lat)
+      (cond
+       ((null? lat) 0)
+       (else
+        (cond
+         ((eq? (car lat) a)
+          (add1 (occur a (cdr lat))))
+         (else (occur a (cdr lat))))))))
+#+end_src
