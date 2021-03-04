@@ -690,3 +690,23 @@ This function counts how many times an atom =a= appears in list =lat=.
           (add1 (occur a (cdr lat))))
          (else (occur a (cdr lat))))))))
 #+end_src
+
+** one?
+
+Checks whether the number =n= is one. Funny, my own version (the first
+one) uses exactly the opposite logic as the one in the book.
+
+#+begin_src scheme src/4.scm
+  (define one?
+    (lambda (n)
+      (cond
+       ((zero? (sub1 n)) #t)
+       (else #f))))
+
+  (define one?
+    (lambda (n)
+      (cond
+       ((zero? n) #f)
+       (else
+        (zero? (sub1 n))))))
+#+end_src
