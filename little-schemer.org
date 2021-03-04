@@ -361,6 +361,8 @@ with =null?=.
 
 * Numbers Games
 
+** add1 and sub1
+
 #+begin_src scheme :tangle src/4.scm
   (define add1
     (lambda (n)
@@ -370,3 +372,25 @@ with =null?=.
     (lambda (n)
       (- n 1)))
 #+end_src
+
+** plus and minus
+
+Reimplementing the basic mathematical operations of addition and
+subtraction using recursion.
+
+#+begin_src scheme :tangle src/4.scm
+  (define plus
+    (lambda (n m)
+      (cond
+       ((zero? m) n)
+       (else
+        (add1 (plus n (sub1 m)))))))
+
+  (define minus
+    (lambda (n m)
+      (cond
+       ((zero? m) n)
+       (else
+        (sub1 (minus n (sub1 m)))))))
+#+end_src
+
