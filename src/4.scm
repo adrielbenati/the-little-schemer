@@ -34,3 +34,10 @@
      (else
       (plus (car tup)
             (addtup (cdr tup)))))))
+
+(define x
+  (lambda (n m)
+    (cond
+     ((zero? m) 0)
+     (else
+      (plus n (x n (sub1 m)))))))
