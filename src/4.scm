@@ -135,3 +135,26 @@
         (cons (car lat)
               (no-nums (cdr lat)))))))))
 
+(define all-nums
+  (lambda (lat)
+    (cond
+     ((null? lat)
+      (quote ()))
+     (else
+      (cond
+       ((not (number? (car lat)))
+        (all-nums (cdr lat)))
+       (else
+        (cons (car lat)
+              (all-nums (cdr lat)))))))))
+
+(define all-nums
+  (lambda (lat)
+    (cond
+     ((null? lat) (quote ()))
+     (else
+      (cond
+       ((number? (car lat))
+        (cons (car lat)
+              (all-nums (cdr lat))))
+       (else (all-nums (cdr lat))))))))

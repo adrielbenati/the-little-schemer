@@ -624,3 +624,35 @@ number atoms removed.
                 (no-nums (cdr lat)))))))))
 #+end_src
 
+** all-nums
+
+The opposite of the above function. This one takes a =lat= and returns
+a =tup=. Here I provide two implementations of this: the first, my own
+hacky version based on an inversion of =no-nums=, and the second,
+provided by the book.
+
+#+begin_src scheme :tangle src/4.scm
+  (define all-nums
+    (lambda (lat)
+      (cond
+       ((null? lat)
+        (quote ()))
+       (else
+        (cond
+         ((not (number? (car lat)))
+          (all-nums (cdr lat)))
+         (else
+          (cons (car lat)
+                (all-nums (cdr lat)))))))))
+
+  (define all-nums
+    (lambda (lat)
+      (cond
+       ((null? lat) (quote ()))
+       (else
+        (cond
+         ((number? (car lat))
+          (cons (car lat)
+                (all-nums (cdr lat))))
+         (else (all-nums (cdr lat))))))))
+#+end_src
