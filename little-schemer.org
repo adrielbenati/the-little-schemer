@@ -397,7 +397,8 @@ subtraction using recursion.
 ** tup?
 
 A custom function I made as the concept of a =tup= was introduced. It
-checks whether a list is a list of numbers. 
+checks whether a list is a list of numbers. Then I realized this is
+just a reimplementation of =lat?=, but for tups.
 
 #+begin_src scheme :tangle src/4.scm
   (define tup?
