@@ -19,3 +19,10 @@
      ((zero? m) n)
      (else
       (sub1 (minus n (sub1 m)))))))
+
+(define tup?
+  (lambda (tup)
+    (cond
+     ((null? tup) #t)
+     ((number? (car tup)) (tup? (cdr tup)))
+     (else #f))))

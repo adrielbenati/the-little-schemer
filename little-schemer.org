@@ -394,3 +394,16 @@ subtraction using recursion.
         (sub1 (minus n (sub1 m)))))))
 #+end_src
 
+** tup?
+
+A custom function I made as the concept of a =tup= was introduced. It
+checks whether a list is a list of numbers. 
+
+#+begin_src scheme :tangle src/4.scm
+  (define tup?
+    (lambda (tup)
+      (cond
+       ((null? tup) #t)
+       ((number? (car tup)) (tup? (cdr tup)))
+       (else #f))))
+#+end_src
