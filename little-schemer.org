@@ -485,6 +485,10 @@ separate tups, instead of just one.
 
 ** > and <
 
+Here we have two functions: =>= and =<=. They do as the mathematical
+operators indicate: they compare two numbers and return #t or #f
+depending on result.
+
 #+begin_src scheme :tangle src/4.scm
   (define >
     (lambda (n m)
@@ -501,7 +505,15 @@ separate tups, instead of just one.
        ((zero? n) #t)
        (else
         (< (sub1 n) (sub1 m))))))
+#+end_src
 
+** =
+
+Here are two implementations of a fuction for checking whether two
+numbers are equal. The first implements this from scratch, while the
+second one uses the above =<= and =>= functions for this.
+
+#+begin_src scheme :tangle src/4.scm
   (define =
     (lambda (n m)
       (cond
@@ -515,7 +527,14 @@ separate tups, instead of just one.
        ((< n m) #f)
        ((> n m) #f)
        (else #t))))
+#+end_src
 
+** expt (^)
+
+This function uses the above =x= function for exponantiating a number
+=n= by a number =m=.
+
+#+begin_src scheme :tangle src/4.scm
   (define ^
     (lambda (n m)
       (cond
