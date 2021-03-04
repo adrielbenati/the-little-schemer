@@ -587,3 +587,19 @@ position, that is, the =Nth= atom.
               (cdr lat))))))
 #+end_src
 
+** rempick
+
+This function works similarly to the above =pick=, except it /removes/
+the desired atom instead of returning it.
+
+#+begin_src scheme :tangle src/4.scm
+  (define rempick
+    (lambda (n lat)
+      (cond
+       ((zero? (sub1 n))
+        (cdr lat))
+       (else
+        (cons (car lat)
+              (rempick (sub1 n)
+                       (cdr lat)))))))
+#+end_src
