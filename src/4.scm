@@ -94,7 +94,7 @@
     (cond
      ((< n m) 0)
      (else
-      (add1 (??? (minus n m) m))))))
+      (add1 (division (minus n m) m))))))
 
 (define len
   (lambda (lat)
