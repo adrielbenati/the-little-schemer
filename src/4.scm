@@ -50,3 +50,26 @@
      (else
       (cons (+ (car tup1) (car tup2))
             (tup+ (cdr tup1) (cdr tup2)))))))
+
+(define >
+  (lambda (n m)
+    (cond
+     ((zero? n) #f)
+     ((zero? m) #t)
+     (else
+      (> (sub1 n) (sub1 m))))))
+
+(define <
+  (lambda (n m)
+    (cond
+     ((zero? m) #f)
+     ((zero? n) #t)
+     (else
+      (< (sub1 n) (sub1 m))))))
+
+(define =
+  (lambda (n m)
+    (cond
+     ((zero? n) (zero? m))
+     (else
+      (= (sub1 n) (sub1 m))))))
