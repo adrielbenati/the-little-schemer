@@ -570,3 +570,20 @@ contained in that lat.
        (else
         (add1 (len (cdr lat)))))))
 #+end_src
+
+** pick
+
+This function recurs over a =lat= and returns the atom in =n=
+position, that is, the =Nth= atom.
+
+#+begin_src scheme :tangle src/4.scm
+  (define pick
+    (lambda (n lat)
+      (cond
+       ((zero? (sub1 n))
+        (car lat))
+       (else
+        (pick (sub1 n)
+              (cdr lat))))))
+#+end_src
+
