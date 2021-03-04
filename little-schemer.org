@@ -603,3 +603,24 @@ the desired atom instead of returning it.
               (rempick (sub1 n)
                        (cdr lat)))))))
 #+end_src
+
+** no-nums
+
+This function takes an argument =lat=, and returns that lat with all
+number atoms removed.
+
+#+begin_src scheme :tangle src/4.scm
+  (define no-nums
+    (lambda (lat)
+      (cond
+       ((null? lat)
+        (quote ()))
+       (else
+        (cond
+         ((number? (car lat))
+          (no-nums (cdr lat)))
+         (else
+          (cons (car lat)
+                (no-nums (cdr lat)))))))))
+#+end_src
+

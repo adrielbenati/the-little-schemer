@@ -121,3 +121,17 @@
       (cons (car lat)
             (rempick (sub1 n)
                      (cdr lat)))))))
+
+(define no-nums
+  (lambda (lat)
+    (cond
+     ((null? lat)
+      (quote ()))
+     (else
+      (cond
+       ((number? (car lat))
+        (no-nums (cdr lat)))
+       (else
+        (cons (car lat)
+              (no-nums (cdr lat)))))))))
+
