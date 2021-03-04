@@ -70,6 +70,6 @@
 (define =
   (lambda (n m)
     (cond
-     ((zero? n) (zero? m))
-     (else
-      (= (sub1 n) (sub1 m))))))
+     ((< n m) #f)
+     ((> n m) #f)
+     (else #t))))
