@@ -556,3 +556,17 @@ This function divides =n= by =m=. And divides the integer quotient.
        (else
         (add1 (??? (minus n m) m))))))
 #+end_src
+
+** length
+
+This function takes a =lat= as argument, and counts how many atoms are
+contained in that lat.
+
+#+begin_src scheme :tangle src/4.scm
+  (define len
+    (lambda (lat)
+      (cond
+       ((null? lat) 0)
+       (else
+        (add1 (len (cdr lat)))))))
+#+end_src
