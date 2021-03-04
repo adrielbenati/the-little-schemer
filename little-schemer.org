@@ -463,3 +463,23 @@ multiplication.
 When building a value with =cons=, always consider of the terminating
 line.
 
+** tup+
+
+This function takes two arguments: =tup1= and =tup2=, both being of
+the same length. It adds together the individual elements of each tup
+and returns a tup.
+
+This function works by doing something a bit special: it recurs over two
+separate tups, instead of just one.
+
+#+begin_src scheme :tangle src/4.scm
+  (define tup+
+    (lambda (tup1 tup2)
+      (cond
+       ((and (null? tup1)
+             (null? tup2))
+        (quote ()))
+       (else
+        (cons (+ (car tup1) (car tup2))
+              (tup+ (cdr tup1) (cdr tup2)))))))
+#+end_src
