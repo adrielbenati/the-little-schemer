@@ -694,7 +694,9 @@ This function counts how many times an atom =a= appears in list =lat=.
 ** one?
 
 Checks whether the number =n= is one. Funny, my own version (the first
-one) uses exactly the opposite logic as the one in the book.
+one) uses exactly the opposite logic as the one in the book. The third
+version is the final version presented in the book, which, while
+simple, depends on the = function. The other two are standalone.
 
 #+begin_src scheme src/4.scm
   (define one?
@@ -709,4 +711,8 @@ one) uses exactly the opposite logic as the one in the book.
        ((zero? n) #f)
        (else
         (zero? (sub1 n))))))
+
+  (define one?
+    (lambda (n)
+      (= n 1)))
 #+end_src
