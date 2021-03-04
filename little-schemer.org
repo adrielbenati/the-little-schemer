@@ -441,7 +441,7 @@ questions about it: ~(zero? n)~ and =else=.
         (plus n (x n (sub1 m)))))))
 #+end_src
 
-** Fourth Commandment (revised)
+** The Fourth Commandment (revised)
 
 Always change at least one argument while recurring. It must be
 changed to be closer to termination. The changing argument must be
@@ -449,3 +449,17 @@ tested in the termination condition:
 
 - when using =cdr=, test termination with =null?=.
 - when using =sub1=, test termination with =zero?=.
+
+** The Fifth Commandment
+
+When building a value with =plus=, always use 0 for the value of the
+terminating line, for adding 0 does not change the value of an
+addition.
+
+When building a value with =x=, always use 1 for the value of the
+terminating line, for multiplying by 1 does not change the value of a
+multiplication.
+
+When building a value with =cons=, always consider of the terminating
+line.
+
