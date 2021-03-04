@@ -656,3 +656,21 @@ provided by the book.
                 (all-nums (cdr lat))))
          (else (all-nums (cdr lat))))))))
 #+end_src
+
+** eqan?
+
+This function takes atoms =a1= and =a2= and checks whether they are
+the same atom. This is similar to =eq?=, but also supports numbers.
+
+#+begin_src scheme :tangle src/4.scm
+  (define eqan?
+    (lambda (a1 a2)
+      (cond
+       ((and (number? a1)
+             (number? a2))
+        (= a1 a2))
+       ((or (number? a1)
+            (number? a2)) #f)
+       (else
+        (eq? a1 a2)))))
+#+end_src
