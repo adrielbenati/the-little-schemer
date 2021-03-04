@@ -423,3 +423,10 @@ recursion and the above defined =plus= function.
         (plus (car tup)
               (addtup (cdr tup)))))))
 #+end_src
+
+** The First Commandment (revised)
+
+When recurring on a list of atoms, =lat=, ask two questions about it:
+~(null? tat)~ and else.  When recurring on a number, =n=, ask two
+questions about it: ~(zero? n)~ and =else=.
+
