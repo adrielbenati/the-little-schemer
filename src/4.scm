@@ -26,3 +26,11 @@
      ((null? tup) #t)
      ((number? (car tup)) (tup? (cdr tup)))
      (else #f))))
+
+(define addtup
+  (lambda (tup)
+    (cond
+     ((null? tup) 0)
+     (else
+      (plus (car tup)
+            (addtup (cdr tup)))))))

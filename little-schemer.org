@@ -408,3 +408,18 @@ just a reimplementation of =lat?=, but for tups.
        ((number? (car tup)) (tup? (cdr tup)))
        (else #f))))
 #+end_src
+
+** addtup
+
+This function takes a tup =tup= and adds all the numbers in it, using
+recursion and the above defined =plus= function.
+
+#+begin_src scheme :tangle src/4.scm
+  (define addtup
+    (lambda (tup)
+      (cond
+       ((null? tup) 0)
+       (else
+        (plus (car tup)
+              (addtup (cdr tup)))))))
+#+end_src
