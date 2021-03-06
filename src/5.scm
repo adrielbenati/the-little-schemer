@@ -10,3 +10,11 @@
         (cons (car l) (rember* a (cdr l))))))
      (else
       (cons (rember* a (car l)) (rember* a (cdr l)))))))
+
+(define position
+  (lambda (a lat)
+    (cond
+     ((null? lat) (quote ()))
+     ((eq? (car lat) a) 1)
+     (else
+      (add1 (position a (cdr lat)))))))
