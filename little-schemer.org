@@ -757,6 +757,9 @@ car is another list.
 
 ** position
 
+Function I made. It takes an atom =a= and lat as arguments, and counts
+the position =a= takes in the lat.
+
 #+begin_src scheme :tangle src/5.scm
   (define position
     (lambda (a lat)
