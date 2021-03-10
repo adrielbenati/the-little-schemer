@@ -902,3 +902,17 @@ Like =member?=, but a *-function.
         (or (member* a (car l))
             (member* a (cdr l)))))))
 #+end_src
+
+** leftmost
+
+Recurs over the =car= of a list =l= which does not contain empty
+lists. Returns the leftmost atom.
+
+#+begin_src scheme :tangle src/5.scm
+  (define leftmost
+    (lambda (l)
+      (cond
+       ((atom? (car l)) (car l))
+       (else
+        (leftmost (car l))))))
+#+end_src

@@ -95,3 +95,10 @@
      (else
       (or (member* a (car l))
           (member* a (cdr l)))))))
+
+(define leftmost
+  (lambda (l)
+    (cond
+     ((atom? (car l)) (car l))
+     (else
+      (leftmost (car l))))))
