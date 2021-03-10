@@ -28,7 +28,9 @@
      ((atom? (car l))
       (cond
        ((eq? (car l) old)
-        (cons old (cons new (cdr l))))
+        (cons (car l)
+              (cons new
+                    (insertR* new old (cdr l)))))
        (else
         (cons (car l)
               (insertR* new old (cdr l))))))
