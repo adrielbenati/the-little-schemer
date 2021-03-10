@@ -865,6 +865,8 @@ S-expressions.
 
 ** insertL*
 
+Like =multiinsertL=, but able to operate on lists of lists as well.
+
 #+begin_src scheme :tangle src/5.scm
   (define insertL*
     (lambda (new old l)
@@ -874,7 +876,8 @@ S-expressions.
         (cond
          ((eq? (car l) old)
           (cons new
-                (insertL* new old (cdr l))))
+                (cons old (insertL* new old
+                                    (cdr l)))))
          (else
           (cons (car l)
                 (insertL* new old (cdr l))))))

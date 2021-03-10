@@ -76,7 +76,8 @@
       (cond
        ((eq? (car l) old)
         (cons new
-              (insertL* new old (cdr l))))
+              (cons old (insertL* new old
+                                  (cdr l)))))
        (else
         (cons (car l)
               (insertL* new old (cdr l))))))
