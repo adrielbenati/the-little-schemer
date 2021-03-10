@@ -7,9 +7,11 @@
        ((eq? (car l) a)
         (rember* a (cdr l)))
        (else
-        (cons (car l) (rember* a (cdr l))))))
+        (cons (car l)
+              (rember* a (cdr l))))))
      (else
-      (cons (rember* a (car l)) (rember* a (cdr l)))))))
+      (cons (rember* a (car l))
+            (rember* a (cdr l)))))))
 
 (define position
   (lambda (a lat)
@@ -28,7 +30,8 @@
        ((eq? (car l) old)
         (cons old (cons new (cdr l))))
        (else
-        (cons (car l) (insertR* new old (cdr l))))))
+        (cons (car l)
+              (insertR* new old (cdr l))))))
      (else
       (cons (insertR* new old (car l))
             (insertR* new old (cdr l)))))))
@@ -44,7 +47,8 @@
        (else
         (occur* a (cdr l)))))
      (else
-      (plus (occur* a (car l)) (occur* a (cdr l)))))))
+      (plus (occur* a (car l))
+            (occur* a (cdr l)))))))
 
 (define subst*
   (lambda (new old l)
@@ -53,7 +57,8 @@
      ((atom? (car l))
       (cond
        ((eq? (car l) old)
-        (cons new (subst* new old (cdr l))))
+        (cons new
+              (subst* new old (cdr l))))
        (else
         (cons (car l)
               (subst* new old (cdr l))))))

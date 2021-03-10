@@ -750,9 +750,11 @@ car is another list.
          ((eq? (car l) a)
           (rember* a (cdr l)))
          (else
-          (cons (car l) (rember* a (cdr l))))))
+          (cons (car l)
+                (rember* a (cdr l))))))
        (else
-        (cons (rember* a (car l)) (rember* a (cdr l)))))))
+        (cons (rember* a (car l))
+              (rember* a (cdr l)))))))
 #+end_src
 
 ** position
@@ -784,7 +786,8 @@ Like =insertR*=, but able to operate on lists of lists as well.
          ((eq? (car l) old)
           (cons old (cons new (cdr l))))
          (else
-          (cons (car l) (insertR* new old (cdr l))))))
+          (cons (car l)
+                (insertR* new old (cdr l))))))
        (else
         (cons (insertR* new old (car l))
               (insertR* new old (cdr l)))))))
@@ -831,7 +834,8 @@ of S-expressions.
          (else
           (occur* a (cdr l)))))
        (else
-        (plus (occur* a (car l)) (occur* a (cdr l)))))))
+        (plus (occur* a (car l))
+              (occur* a (cdr l)))))))
 #+end_src
 
 ** subst*
@@ -847,7 +851,8 @@ S-expressions.
        ((atom? (car l))
         (cond
          ((eq? (car l) old)
-          (cons new (subst* new old (cdr l))))
+          (cons new
+                (subst* new old (cdr l))))
          (else
           (cons (car l)
                 (subst* new old (cdr l))))))
