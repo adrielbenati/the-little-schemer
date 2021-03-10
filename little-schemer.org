@@ -814,3 +814,23 @@ must be tested in the termination condition: when using =cdr=, test
 termination with =null?= and when using =sub1=, test termination with
 =zero?=.
 
+** occur*
+
+Check how many times =a= appears in =l=, where =l= is an arbitary list
+of S-expressions.
+
+#+begin_src scheme :tangle src/5.scm
+  (define occur*
+    (lambda (a l)
+      (cond
+       ((null? l) 0)
+       ((atom? (car l))
+        (cond
+         ((eq? (car l) a)
+          (add1 (occur* a (cdr l))))
+         (else
+          (occur* a (cdr l)))))
+       (else
+        (plus (occur* a (car l)) (occur* a (cdr l)))))))
+#+end_src
+
