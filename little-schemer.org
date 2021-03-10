@@ -834,3 +834,24 @@ of S-expressions.
         (plus (occur* a (car l)) (occur* a (cdr l)))))))
 #+end_src
 
+** subst*
+
+Like =multisubst=, but operates on any arbitrary list of
+S-expressions.
+
+#+begin_src scheme :tangle src/5.scm
+  (define subst*
+    (lambda (new old l)
+      (cond
+       ((null? l) (quote ()))
+       ((atom? (car l))
+        (cond
+         ((eq? (car l) old)
+          (cons new (subst* new old (cdr l))))
+         (else
+          (cons (car l)
+                (subst* new old (cdr l))))))
+       (else
+        (cons (subst* new old (car l))
+              (subst* new old (cdr l)))))))
+#+end_src
