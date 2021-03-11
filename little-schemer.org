@@ -935,3 +935,16 @@ lists. Returns the leftmost atom.
         (and (eqlist? (car l1) (car l2))
              (eqlist? (cdr l1) (cdr l2)))))))
 #+end_src
+
+** equal?
+
+#+begin_src scheme :tangle src/5.scm
+  (define equal?
+    (lambda (s1 s2)
+      (cond
+       ((and (atom? s1) (atom? s2))
+        (eqan? s1 s2))
+       ((or (atom? s1) (atom? s2)) #f)
+       (else
+        (eqlist? s1 s2)))))
+#+end_src
