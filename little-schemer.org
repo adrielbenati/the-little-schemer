@@ -962,3 +962,8 @@ lists. Returns the leftmost atom.
              (eqlist? (cdr l1) (cdr l2)))))))
 #+end_src
 
+** The Sixth Commandment
+
+Simplify only after the function is correct.
+
+** 
