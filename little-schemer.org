@@ -966,4 +966,34 @@ lists. Returns the leftmost atom.
 
 Simplify only after the function is correct.
 
-** 
+** rember2
+
+Like =rember=, but using a list =l= instead of a =lat=, and an
+S-expression =s= instead of atom =a=.
+
+#+begin_src scheme :tangle src/5.scm
+  (define rember2
+    (lambda (s l)
+      (cond
+       ((null? l) (quote ()))
+       ((atom? (car l))
+        (cond
+         ((equal? (car l) s)
+          (cdr l))
+         (else
+          (cons (car l) (rember2 s (cdr l))))))
+       (else
+        (cond
+         ((equal? (car l) s) (cdr l))
+         (else
+          (cons (car l) (rember2 s (cdr l)))))))))
+
+  (define rember2
+    (lambda (s l)
+      (cond
+       ((null? l) (quote ()))
+       ((equal? (car l) s) (cdr l))
+       (else
+        (cons (car l) (rember2 s (cdr l)))))))
+
+#+end_src

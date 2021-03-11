@@ -135,3 +135,27 @@
      (else
       (and (equal? (car l1) (car l2))
            (eqlist? (cdr l1) (cdr l2)))))))
+
+(define rember2
+  (lambda (s l)
+    (cond
+     ((null? l) (quote ()))
+     ((atom? (car l))
+      (cond
+       ((equal? (car l) s)
+        (cdr l))
+       (else
+        (cons (car l) (rember2 s (cdr l))))))
+     (else
+      (cond
+       ((equal? (car l) s) (cdr l))
+       (else
+        (cons (car l) (rember2 s (cdr l)))))))))
+
+(define rember2
+  (lambda (s l)
+    (cond
+     ((null? l) (quote ()))
+     ((equal? (car l) s) (cdr l))
+     (else
+      (cons (car l) (rember2 s (cdr l)))))))
