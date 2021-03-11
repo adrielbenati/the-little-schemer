@@ -995,5 +995,4 @@ S-expression =s= instead of atom =a=.
        ((equal? (car l) s) (cdr l))
        (else
         (cons (car l) (rember2 s (cdr l)))))))
-
 #+end_src
